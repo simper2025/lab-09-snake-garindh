@@ -9,6 +9,8 @@
 #include "point.h"
 #include "Keyboard.h"
 #include "Console.h"
+#include "Mouse.h"
+#include "Snake.h"
 using namespace std;
 
 #define key_UP 72
@@ -22,6 +24,8 @@ class GameRunner
 private:
 	KeyCommand keyPress;
 	float repeat;
+	Mouse m1;
+	Snake s1;
 public:
 	GameRunner();
 	GameRunner(float repeat, KeyCommand k);

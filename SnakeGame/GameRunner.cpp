@@ -2,49 +2,61 @@
 
 GameRunner::GameRunner()
 {
+	repeat = 0.3;
+	keyPress = KeyCommand::none;
+	m1.Move();
 }
 
 GameRunner::GameRunner(float r, KeyCommand kP)
 {
-    repeat = r;
-    keyPress = kP;
+	repeat = r;
+	keyPress = kP;
+	m1.Move();
 }
 
 void GameRunner::RunGame()
 {
-    Keyboard k1;
+	Keyboard k1;
 
-    chrono::time_point<chrono::system_clock> runTime;
-    chrono::time_point<chrono::system_clock> currentTime;
-    runTime = std::chrono::system_clock::now();
-    Sleep(300);
+	chrono::time_point<chrono::system_clock> runTime;
+	chrono::time_point<chrono::system_clock> currentTime;
+	runTime = std::chrono::system_clock::now();
+	Sleep(300);
 
-    point playerloc = { 0, 10 };
-    KeyCommand direction;
-    int length = 5;
+	point playerLoc = s1.GetHeadLoc();
+	KeyCommand direction = KeyCommand::right;
+	int length = s1.GetLength();
 
-    //Loop to start drawing and playing.
-    while (k1.KeyPress(keyPress) != KeyCommand::quit) {
+	for (int i = 0; i <= 20; i++)
+	{
+		for (int j = 0; j <= 20; j++)
+		{
 
-    direction = k1.KeyPress(keyPress);
+			Console::txtPlot({ i,j }, 170);
+		}
+	}
+	m1.Move();
+	Console::txtPlot(playerLoc, 164);
+	//Loop to start drawing and playing.
+	while (k1.KeyPress(direction) != KeyCommand::quit) {
 
-    currentTime = chrono::system_clock::now();
+		direction = k1.KeyPress(direction);
+		currentTime = chrono::system_clock::now();
 
-    double elapsedTime = chrono::duration_cast<chrono::milliseconds>(currentTime - runTime).count();
-    if (elapsedTime > repeat * 1000) {
-        runTime = chrono::system_clock::now();
+		double elapsedTime = chrono::duration_cast<chrono::milliseconds>(currentTime - runTime).count();
+		if (elapsedTime > repeat * 1000) {
+			runTime = chrono::system_clock::now();
 
-        //Most of your game logic goes here.
+			//Most of your game logic goes here.
 
-        Console::txtPlot(playerloc, 31);
+			s1.Move(direction);
 
-        _cprintf("Length: %i", length);
+		}
 
-
-    }
-
-    Sleep(10);
-    }
+		Console::txtPlot({ 0,21 }, 15);
+		_cprintf("Length: %i", length);
+		Sleep(10);
+	}
 }
 
 

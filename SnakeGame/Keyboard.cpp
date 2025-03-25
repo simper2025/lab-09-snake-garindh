@@ -2,8 +2,10 @@
 
 KeyCommand Keyboard::KeyPress(KeyCommand direction)
 {
+    //KeyCommand direction = KeyCommand::none;
+
     if (_kbhit())
-    {;
+    {
         int keypress = _getch();
         switch (keypress)
         {
@@ -28,7 +30,6 @@ KeyCommand Keyboard::KeyPress(KeyCommand direction)
             break;
 
         default:
-            direction = KeyCommand::none;
             break;
         }
     }

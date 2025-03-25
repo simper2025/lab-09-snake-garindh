@@ -132,12 +132,16 @@
     <ClCompile Include="GameRunner.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="KeyCommand.h" />
+    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="GameRunner.h" />
     <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
