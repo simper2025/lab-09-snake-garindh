@@ -13,6 +13,6 @@ public:
 	Mouse(point pos);
 	point GetPosition();
 	void SetPosition(point pos);
-	void Move();
+	void Move(point max, vector<point> tail);
 	void Draw();
 };

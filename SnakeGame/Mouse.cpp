@@ -20,15 +20,21 @@ void Mouse::SetPosition(point pos)
 	position = pos;
 }
 
-void Mouse::Move()
+void Mouse::Move(point max, vector<point> tail)
 {
 	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<int> rand(1, 15);
-	//uniform_int_distribution<int> randY(1, 20);
-	int locX = rand(gen);
-	int locY = rand(gen);
-
+	uniform_int_distribution<int> randX(1, max.x - 1);
+	uniform_int_distribution<int> randY(1, max.y - 1);
+	int locX = randX(gen);
+	int locY = randY(gen);
+	for (int i = 0; i < tail.size(); i++)
+	{
+		if (tail[i].x == locX && tail[i].y == locY)
+		{
+			Move(max, tail);
+		}
+	}
 	position.x = locX;
 	position.y = locY;
 	Draw();

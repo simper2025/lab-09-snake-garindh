@@ -4,38 +4,39 @@ GameRunner::GameRunner()
 {
 	repeat = 0.3;
 	direction = KeyCommand::none;
-	m1.Move();
 }
 
 GameRunner::GameRunner(float r, KeyCommand kP)
 {
 	repeat = r;
 	direction = kP;
-	m1.Move();
 }
 
 void GameRunner::RunGame()
 {
 	Keyboard k1;
-
+	point max = { 15,15 };
 	chrono::time_point<chrono::system_clock> runTime;
 	chrono::time_point<chrono::system_clock> currentTime;
 	runTime = std::chrono::system_clock::now();
 	Sleep(300);
 
 	point playerLoc = s1.GetHeadLoc();
-	//direction = KeyCommand::right;
+	vector<point> tailLocs = s1.GetTailLocs();
 	int length = s1.GetLength();
 	int hC = s1.GetHeadColor();
 	for (int i = 0; i <= 15; i++)
 	{
 		for (int j = 0; j <= 15; j++)
 		{
-
 			Console::txtPlot({ i,j }, 170);
+			if (i == max.x || i == 0 || j == max.y || j == 0)
+			{
+				Console::txtPlot({ i,j }, 34);
+			}
 		}
 	}
-	m1.Move();
+	m1.Move(max, tailLocs);
 	Console::txtPlot(playerLoc, 68);
 	//Loop to start drawing and playing.
 	while (k1.KeyPress(direction) != KeyCommand::quit)
@@ -51,8 +52,13 @@ void GameRunner::RunGame()
 			//Most of your game logic goes here.
 
 			s1.Move(direction);
-		//	playerLoc = s1.GetHeadLoc();
-		//	Console::txtPlot(playerLoc, hC);
+			if (s1.GetHeadLoc() == m1.GetPosition())
+			{
+				length++;
+				s1.SetLength(length);
+				tailLocs = s1.GetTailLocs();
+				m1.Move(max, tailLocs);
+			}
 		}
 
 		Console::txtPlot({ 0,16 }, 15);

@@ -19,7 +19,10 @@ public:
 	Snake(int hC, int bC);
 
 	int GetLength();
+	void SetLength(int l);
 	point GetHeadLoc();
 	int GetHeadColor();
 	void Move(KeyCommand kP);
+	void Draw();
+	vector<point> GetTailLocs();
 };
