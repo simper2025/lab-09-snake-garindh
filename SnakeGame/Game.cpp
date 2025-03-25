@@ -17,6 +17,7 @@ using namespace std;
 #define key_RIGHT 77
 #define key_ESCAPE 27
 
+
 //This is a struct (aka structure) it reduces the number of variables needed.
 
 //keypress keeps track of what the last pressed key. It is global, but could be made local.
@@ -40,7 +41,7 @@ int main()
     //    _cprintf("Color option: %i. Hello, world.\n", i);
     //}
    
-    GameRunner game1(.3, KeyCommand::right);
+    GameRunner game1(.1, KeyCommand::right);
 	game1.RunGame();
 	return 0;
 }

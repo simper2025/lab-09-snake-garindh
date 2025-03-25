@@ -22,6 +22,7 @@ public:
 	void SetLength(int l);
 	point GetHeadLoc();
 	int GetHeadColor();
+	bool CanMove(KeyCommand kP, point max);
 	void Move(KeyCommand kP);
 	void Draw();
 	vector<point> GetTailLocs();

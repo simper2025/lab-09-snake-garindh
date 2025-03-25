@@ -38,6 +38,53 @@ int Snake::GetHeadColor()
 	return headColor;
 }
 
+bool Snake::CanMove(KeyCommand kP, point max)
+{
+	point up = { headLoc.x, headLoc.y - 1 };
+	point down = { headLoc.x, headLoc.y + 1 };
+	point left = { headLoc.x - 1, headLoc.y };
+	point right = { headLoc.x + 1, headLoc.y };
+
+	for (int i = 0; i < tail.size(); i++)
+	{
+		switch (kP)
+		{
+		case KeyCommand::left:
+			if (left.x == 0 || left == tail[i])
+			{
+				return false;
+			}
+			break;
+
+		case KeyCommand::right:
+			if (right.x == max.x || right == tail[i])
+			{
+				return false;
+			}
+			break;
+
+		case KeyCommand::up:
+			if (up.y == 0 || up == tail[i])
+			{
+				return false;
+			}
+			break;
+
+		case KeyCommand::down:
+			if (down.y == max.y || down == tail[i])
+			{
+				return false;
+			}
+			break;
+
+		default:
+			break;
+		}
+
+	}
+	return true;
+}
+
 void Snake::Move(KeyCommand keyPress)
 {
 	switch (keyPress)

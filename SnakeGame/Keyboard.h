@@ -12,6 +12,7 @@
 #define key_LEFT 75
 #define key_RIGHT 77
 #define key_ESCAPE 27
+
 using namespace std;
 
 class Keyboard

@@ -3,34 +3,48 @@
 KeyCommand Keyboard::KeyPress(KeyCommand direction)
 {
 
-    if (_kbhit())
-    {
-        int keypress = _getch();
-        switch (keypress)
-        {
-        case key_LEFT:
-            direction = KeyCommand::left;
-            break;
+	if (_kbhit())
+	{
+		int keyPress = _getch();
 
-        case key_RIGHT:
-            direction = KeyCommand::right;
-            break;
+		switch (keyPress)
+		{
+		case key_LEFT:
+			if (direction != KeyCommand::right)
+			{
+				direction = KeyCommand::left;
+			}
+			break;
 
-        case key_UP:
-            direction = KeyCommand::up;
-            break;
+		case key_RIGHT:
+			if (direction != KeyCommand::left)
+			{
+				direction = KeyCommand::right;
+			}
+			break;
 
-        case key_DOWN:
-            direction = KeyCommand::down;
-            break;
+		case key_UP:
+			if (direction != KeyCommand::down)
+			{
+				direction = KeyCommand::up;
+			}
+			break;
 
-        case key_ESCAPE:
-            direction = KeyCommand::quit;
-            break;
+		case key_DOWN:
+			if (direction != KeyCommand::up)
+			{
+				direction = KeyCommand::down;
+			}
+			break;
 
-        default:
-            break;
-        }
-    }
-    return direction;
+		case key_ESCAPE:
+			direction = KeyCommand::quit;
+			break;
+
+		default:
+			break;
+		}
+
+	}
+	return direction;
 }
