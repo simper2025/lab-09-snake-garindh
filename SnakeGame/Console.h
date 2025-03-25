@@ -17,6 +17,4 @@ private:
 
 public:
 	static void txtPlot(point item, unsigned char Color);
-
-
 };

@@ -22,7 +22,7 @@ using namespace std;
 class GameRunner
 {
 private:
-	KeyCommand keyPress;
+	KeyCommand direction;
 	float repeat;
 	Mouse m1;
 	Snake s1;

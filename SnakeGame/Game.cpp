@@ -40,7 +40,7 @@ int main()
     //    _cprintf("Color option: %i. Hello, world.\n", i);
     //}
    
-    GameRunner game1(.3, KeyCommand::up);
+    GameRunner game1(.3, KeyCommand::right);
 	game1.RunGame();
 	return 0;
 }

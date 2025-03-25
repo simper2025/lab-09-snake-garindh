@@ -24,7 +24,7 @@ void Mouse::Move()
 {
 	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<int> rand(1, 20);
+	uniform_int_distribution<int> rand(1, 15);
 	//uniform_int_distribution<int> randY(1, 20);
 	int locX = rand(gen);
 	int locY = rand(gen);

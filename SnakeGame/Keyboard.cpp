@@ -2,7 +2,6 @@
 
 KeyCommand Keyboard::KeyPress(KeyCommand direction)
 {
-    //KeyCommand direction = KeyCommand::none;
 
     if (_kbhit())
     {
