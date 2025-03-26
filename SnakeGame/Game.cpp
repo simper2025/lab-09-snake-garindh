@@ -1,7 +1,3 @@
-//This is a frameword to allow you to focus on the game logic.
-//Most of your code will go in three locations. 
-//Function decalrations, game logic in runGame, and the function declarations.
-
 #include <windows.h>
 #include <conio.h>
 #include <vector>
@@ -41,7 +37,7 @@ int main()
     //    _cprintf("Color option: %i. Hello, world.\n", i);
     //}
    
-    GameRunner game1(.1, KeyCommand::right);
+    GameRunner game1(.15, KeyCommand::right);
 	game1.RunGame();
 	return 0;
 }

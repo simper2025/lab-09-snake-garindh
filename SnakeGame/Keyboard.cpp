@@ -9,6 +9,7 @@ KeyCommand Keyboard::KeyPress(KeyCommand direction)
 
 		switch (keyPress)
 		{
+		case key_A:
 		case key_LEFT:
 			if (direction != KeyCommand::right)
 			{
@@ -16,6 +17,7 @@ KeyCommand Keyboard::KeyPress(KeyCommand direction)
 			}
 			break;
 
+		case key_D:
 		case key_RIGHT:
 			if (direction != KeyCommand::left)
 			{
@@ -23,6 +25,7 @@ KeyCommand Keyboard::KeyPress(KeyCommand direction)
 			}
 			break;
 
+		case key_W:
 		case key_UP:
 			if (direction != KeyCommand::down)
 			{
@@ -30,6 +33,7 @@ KeyCommand Keyboard::KeyPress(KeyCommand direction)
 			}
 			break;
 
+		case key_S:
 		case key_DOWN:
 			if (direction != KeyCommand::up)
 			{

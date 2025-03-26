@@ -6,10 +6,10 @@ GameRunner::GameRunner()
 	direction = KeyCommand::none;
 }
 
-GameRunner::GameRunner(float r, KeyCommand kP)
+GameRunner::GameRunner(float r, KeyCommand k)
 {
 	repeat = r;
-	direction = kP;
+	direction = k;
 }
 
 void GameRunner::RunGame()
@@ -42,16 +42,18 @@ void GameRunner::RunGame()
 	m1.Move(max, tailLocs);
 	Console::txtPlot(playerLoc, 68);
 	//Loop to start drawing and playing.
-	while (k1.KeyPress(direction) != KeyCommand::quit && endGame == false)
+	while (direction != KeyCommand::quit && endGame == false)
 	{
 
 		direction = k1.KeyPress(direction);
+
 		currentTime = chrono::system_clock::now();
 
 		double elapsedTime = chrono::duration_cast<chrono::milliseconds>(currentTime - runTime).count();
 		if (elapsedTime > repeat * 1000)
 		{
 			runTime = chrono::system_clock::now();
+	
 
 			//Most of your game logic goes here.
 			if (!s1.CanMove(direction, max))

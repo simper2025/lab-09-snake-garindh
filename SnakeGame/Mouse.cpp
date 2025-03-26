@@ -22,6 +22,7 @@ void Mouse::SetPosition(point pos)
 
 void Mouse::Move(point max, vector<point> tail)
 {
+	bool canMove = true;
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<int> randX(1, max.x - 1);
@@ -32,12 +33,19 @@ void Mouse::Move(point max, vector<point> tail)
 	{
 		if (tail[i].x == locX && tail[i].y == locY)
 		{
-			Move(max, tail);
+			canMove = false;
 		}
 	}
-	position.x = locX;
-	position.y = locY;
-	Draw();
+	if (canMove)
+	{
+		position.x = locX;
+		position.y = locY;
+		Draw();
+	}
+	else
+	{
+		Move(max, tail);
+	}
 }
 
 void Mouse::Draw()
